@@ -35,9 +35,9 @@ export class ListManagerComponent {
   constructor(private todoListService: TodoListService) {
     this.todoList = this.todoListService.getTodoList();
   }
-  
+
   addItem(title: string): void {
-    this.todoList.push({ title });
+      this.todoListService.addItem(title);
   }
 
   trackByFn(index: number, item: TodoItem): number {
