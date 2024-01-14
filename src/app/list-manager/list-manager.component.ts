@@ -12,6 +12,7 @@ import { Subscription } from 'rxjs';
   standalone: true,
   imports: [TodoItemComponent, InputButtonUnitComponent, NgFor, CommonModule],
   template: `
+  <div>
     <h2 class="app-title">
       {{ title }}
     </h2>
@@ -27,6 +28,7 @@ import { Subscription } from 'rxjs';
         ></app-todo-item>
       </li>
     </ul>
+    </div>
     </div>
   `,
   styleUrls: ['./list-manager.component.scss']
