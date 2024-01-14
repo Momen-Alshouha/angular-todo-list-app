@@ -1,0 +1,27 @@
+.navbar {
+    background-color: #282c34;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .brand {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  
+  .brand-icon {
+    width: 50px;
+    margin-right: 10px;
+  }
+
+
+  .container {
+    width: 80%;
+    margin: 0 auto;
+  }
