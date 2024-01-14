@@ -1,0 +1,26 @@
+/* footer.component.css */
+.footer {
+    background-color: #282c34;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .github-icon {
+    width: 30px;
+    margin-top: 10px;
+    filter: invert(1);
+  }
+  
