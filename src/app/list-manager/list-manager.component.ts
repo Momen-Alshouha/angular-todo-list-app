@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { TodoItem } from '../interfaces/todo-item';
 import { InputButtonUnitComponent } from '../input-button-unit/input-button-unit.component';
 import { TodoItemComponent } from '../todo-item/todo-item.component';
 import { NgFor } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { TodoListService } from '../services/todo-list.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-list-manager',
@@ -19,26 +20,32 @@ import { TodoListService } from '../services/todo-list.service';
 
     <ul>
       <li *ngFor="let todoItem of todoList; let i = index; trackBy: trackByFn">
-
-    <app-todo-item
-    [item]="todoItem"
-    (remove)="removeItem($event)"
-    (update)="updateItem($event.item, $event.changes)"
-    ></app-todo-item>
-
-
+        <app-todo-item
+          [item]="todoItem"
+          (remove)="removeItem($event)"
+          (update)="updateItem($event.item, $event.changes)"
+        ></app-todo-item>
+      </li>
     </ul>
     </div>
   `,
   styleUrls: ['./list-manager.component.scss']
 })
-export class ListManagerComponent {
-
+export class ListManagerComponent implements OnDestroy {
   title = "To Do List";
-  todoList: TodoItem[];
+  todoList: TodoItem[] | undefined;
+  private subscription: Subscription;
 
   constructor(private todoListService: TodoListService) {
-    this.todoList = this.todoListService.getTodoList();
+    this.subscription = this.todoListService.todoList$.subscribe(updatedTodoList => {
+      this.todoList = updatedTodoList;
+    });
+
+    this.todoListService.loadTodoListFromStorage();
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   addItem(title: string): void {
@@ -53,10 +60,7 @@ export class ListManagerComponent {
     this.todoListService.updateItem(item, changes);
   }
 
-
   trackByFn(index: number, item: TodoItem): number {
     return index;
   }
-
-
 }
