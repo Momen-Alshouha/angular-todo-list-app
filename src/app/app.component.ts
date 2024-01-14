@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { InputButtonUnitComponent } from './input-button-unit/input-button-unit.component';
+import { TodoItemComponent } from './todo-item/todo-item.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet,InputButtonUnitComponent],
+  imports: [CommonModule, RouterOutlet,InputButtonUnitComponent,TodoItemComponent],
   template: `
   <h1>
   Welcome to {{ title }}!
@@ -16,13 +17,14 @@ import { InputButtonUnitComponent } from './input-button-unit/input-button-unit.
 
 <ul>
   <li *ngFor="let todoItem of todoList; track: title">
-    {{ todoItem.title }}
+   <app-todo-item [item]="todoItem"></app-todo-item>
   </li>
 </ul>
 
 `, 
   styleUrl: './app.component.scss'
 })
+
 export class AppComponent {
   title = 'todo-list';
   todoList = [
