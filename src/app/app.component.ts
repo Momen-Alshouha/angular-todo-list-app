@@ -1,39 +1,45 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { TodoItem } from './interfaces/todo-item';
 import { InputButtonUnitComponent } from './input-button-unit/input-button-unit.component';
 import { TodoItemComponent } from './todo-item/todo-item.component';
-import { TodoItem } from './interfaces/todo-item';
+import { NgFor } from '@angular/common';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [CommonModule, RouterOutlet,InputButtonUnitComponent,TodoItemComponent],
+  standalone:true,
+  imports:[TodoItemComponent,InputButtonUnitComponent,NgFor,CommonModule],
   template: `
-  <h1>
-  Welcome to {{ title }}!
-</h1>
+    <h1>
+      Welcome to {{ title }}!
+    </h1>
 
-<app-input-button-unit></app-input-button-unit>
+    <app-input-button-unit (submit)="addItem($event)"></app-input-button-unit>
 
-<ul>
-  <li *ngFor="let todoItem of todoList; track: title">
-   <app-todo-item [item]="todoItem"></app-todo-item>
-  </li>
-</ul>
+    <ul>
+    <li *ngFor="let todoItem of todoList; let i = index; trackBy: trackByFn">
+    <app-todo-item [item]="todoItem"></app-todo-item>
+    </li>
 
-`, 
-  styleUrl: './app.component.scss'
+    </ul>
+  `,
+  styleUrls: ['./app.component.scss']
 })
-
 export class AppComponent {
   title = 'todo-list';
   todoList: TodoItem[] = [
     {title: 'install NodeJS'},
-    {title: 'install Angular CLI'},
     {title: 'create new app'},
-    {title: 'serve app'},
-    {title: 'develop app'},
-    {title: 'deploy app'},
   ];
+
+  addItem(title: string): void {
+    console.log(title);
+    this.todoList.push({ title });
+  }
+
+  trackByFn(index: number, item: TodoItem): number {
+    return index;
+  }
+  
+
 }
