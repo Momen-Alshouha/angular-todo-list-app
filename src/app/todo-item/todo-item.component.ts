@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Input } from '@angular/core';
+import { TodoItem } from '../interfaces/todo-item';
+
 @Component({
   selector: 'app-todo-item',
   standalone: true,
@@ -10,5 +12,5 @@ import { Input } from '@angular/core';
   styleUrl: './todo-item.component.scss'
 })
 export class TodoItemComponent {
-  @Input() item : any;
+  @Input() item: TodoItem | any;
 }
