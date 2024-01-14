@@ -7,7 +7,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
     <input class="todo-input" #inputElementRef
           placeholder="Enter New Task.."
           (keyup.enter)="submitValue(inputElementRef.value)">
-    <button class="button" (click)="submitValue(inputElementRef.value)">
+    <button class="gradient-button button" (click)="submitValue(inputElementRef.value)">
       Save
     </button>
   `,

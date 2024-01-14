@@ -4,14 +4,7 @@ import { StorageService } from './storage.service';
 
 const todoListStorageKey = 'Todo_List';
 
-const defaultTodoList = [
-  {title: 'install NodeJS'},
-  {title: 'install Angular CLI'},
-  {title: 'create new app'},
-  {title: 'serve app'},
-  {title: 'develop app'},
-  {title: 'deploy app'},
-];
+
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +15,7 @@ export class TodoListService {
 
   constructor(private storageService: StorageService) {
     this.todoList = 
-      storageService.getData(todoListStorageKey) || defaultTodoList;
+      storageService.getData(todoListStorageKey);
   }
 
   saveList() {
