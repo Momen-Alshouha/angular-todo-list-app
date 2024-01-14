@@ -14,8 +14,10 @@ export class TodoListService {
   todoList: TodoItem[];
 
   constructor(private storageService: StorageService) {
-    this.todoList = 
-      storageService.getData(todoListStorageKey);
+
+    const storedToDoList =storageService.getData(todoListStorageKey);
+    this.todoList = storedToDoList!==null && storedToDoList !== undefined ? storedToDoList : [];
+
   }
 
   saveList() {
