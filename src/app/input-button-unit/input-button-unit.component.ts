@@ -4,10 +4,10 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   selector: 'app-input-button-unit',
   standalone:true,
   template: `
-    <input #inputElementRef
+    <input class="todo-input" #inputElementRef
            [value]="title"
            (keyup.enter)="submitValue(inputElementRef.value)">
-    <button (click)="submitValue(inputElementRef.value)">
+    <button class="button" (click)="submitValue(inputElementRef.value)">
       Save
     </button>
   `,

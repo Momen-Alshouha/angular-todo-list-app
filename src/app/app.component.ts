@@ -7,7 +7,7 @@ import { ListManagerComponent } from './list-manager/list-manager.component';
   standalone: true,
   imports: [CommonModule,ListManagerComponent],
   template: `
-  <h1>
+  <h1 class="app-title">
     Welcome to {{ title }}!
   </h1>
 
