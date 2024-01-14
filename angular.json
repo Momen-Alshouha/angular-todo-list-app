@@ -20,6 +20,7 @@
             "outputPath": "dist/angular-todo-list-app",
             "index": "src/index.html",
             "browser": "src/main.ts",
+            "baseHref": "/angular-todo-list-app/",
             "polyfills": [
               "zone.js"
             ],

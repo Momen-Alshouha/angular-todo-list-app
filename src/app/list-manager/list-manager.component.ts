@@ -20,11 +20,12 @@ import { TodoListService } from '../services/todo-list.service';
     <ul>
       <li *ngFor="let todoItem of todoList; let i = index; trackBy: trackByFn">
 
-  <app-todo-item [item]="todoItem"
-     (remove)="removeItem($event)"
-     (update)="updateItem($event.item, $event.changes)"></app-todo-item>
+    <app-todo-item
+    [item]="todoItem"
+    (remove)="removeItem($event)"
+    (update)="updateItem($event.item, $event.changes)"
+    ></app-todo-item>
 
-    </li>
 
     </ul>
     </div>
@@ -48,9 +49,10 @@ export class ListManagerComponent {
     this.todoListService.deleteItem(item);
   }
 
-  updateItem(item : any, changes : any) {
+  updateItem(item: TodoItem, changes: any): void {
     this.todoListService.updateItem(item, changes);
   }
+
 
   trackByFn(index: number, item: TodoItem): number {
     return index;

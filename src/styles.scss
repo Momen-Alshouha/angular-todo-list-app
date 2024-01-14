@@ -1,54 +1,74 @@
-html, body, div, span,
-h1, p, ul, li {
-  padding: 0;
-  border: 0;
-  font: inherit;
-  vertical-align: baseline;
+html,
+body,
+div,
+span,
+h1,
+p,
+ul,
+li {
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
 }
 
 body {
-  background: #f1f1f1;
-  font-size: 16px;
-  line-height: 22px;
-  color: #404040;
-  font-family: 'Lucida Grande', Verdana, sans-serif;
-  margin: 0 auto;
+    background: #f1f1f1;
+    font-size: 16px;
+    line-height: 22px;
+    color: #404040;
+    font-family: 'Lucida Grande', Verdana, sans-serif;
+    margin: 0 auto;
 }
 
-ol, ul {
-  list-style: none;
+ol,
+ul {
+    list-style: none;
 }
 
 .btn {
-  background: lightseagreen;
-  color: #fff;
-  padding: 3px 10px;
-  margin: 0 0 0 3px;
-  border: none;
-  border-radius: 5px;
-  font-size: 12px;
-  line-height: 24px;
-  cursor: pointer;
-  vertical-align: bottom;
+    background: lightseagreen;
+    color: #fff;
+    padding: 3px 10px;
+    margin: 0 0 0 3px;
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+    line-height: 24px;
+    cursor: pointer;
+    vertical-align: bottom;
 }
 
 .btn:hover {
-  background: lightslategrey;
+    background: lightslategrey;
 }
 
 .btn-red {
-  background: red;
+    background: red;
 }
 
 .btn-red:hover {
-  background: darkred;
+    background: darkred;
 }
 
 .app-title {
-  font-size: 52px;
-  line-height: 52px;
-  margin-bottom: 30px;
-  font-weight: bold;
-  text-align: center;
-  letter-spacing: -0.8px;
-}   
+    font-size: 52px;
+    line-height: 52px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: -0.8px;
+}
+
+.todo-input:focus {
+    outline-color: #3498db !important;
+}
+
+.todo-input {
+    flex: 1;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 8px;
+}
