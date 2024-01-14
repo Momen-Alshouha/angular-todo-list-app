@@ -4,6 +4,7 @@ import { InputButtonUnitComponent } from '../input-button-unit/input-button-unit
 import { TodoItemComponent } from '../todo-item/todo-item.component';
 import { NgFor } from '@angular/common';
 import { CommonModule } from '@angular/common';
+import { TodoListService } from '../services/todo-list.service';
 
 @Component({
   selector: 'app-list-manager',
@@ -27,20 +28,19 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./list-manager.component.scss']
 })
 export class ListManagerComponent {
-  title = 'Todo List';
-  todoList: TodoItem[] = [
-    { title: 'install NodeJS' },
-    { title: 'create new app' },
-  ];
 
+  title = "To Do List";
+  todoList: TodoItem[];
+
+  constructor(private todoListService: TodoListService) {
+    this.todoList = this.todoListService.getTodoList();
+  }
+  
   addItem(title: string): void {
-    //console.log(title);
     this.todoList.push({ title });
   }
 
   trackByFn(index: number, item: TodoItem): number {
-    
-    console.log(item.title)
     return index;
   }
 
