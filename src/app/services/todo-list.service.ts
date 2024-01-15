@@ -10,24 +10,28 @@ const todoListStorageKey = 'Todo_List';
   providedIn: 'root',
 })
 export class TodoListService {
+
   private todoListSubject = new BehaviorSubject<TodoItem[]>([]);
-  todoList$ = this.todoListSubject.asObservable();
+
+  todoList = this.todoListSubject.asObservable();
 
   constructor(private storageService: StorageService) {
     this.loadTodoListFromStorage();
   }
 
-  public async loadTodoListFromStorage() {
+  public loadTodoListFromStorage() {
     try {
-      const storedTodoList = await this.storageService.getData(todoListStorageKey);
-      const initialTodoList = storedTodoList !== null && storedTodoList !== undefined ? storedTodoList : [];
+      const storedTodoList = this.storageService.getData(todoListStorageKey);
+      
+      const initialTodoList = storedTodoList ?? [];
+      
       this.todoListSubject.next([...initialTodoList]);
     } catch (error) {
       console.error('Error loading Todo list:', error);
     }
   }
 
-  private async saveList(todoList: TodoItem[]) {
+  private saveList(todoList: TodoItem[]) {
     try {
       this.storageService.setData(todoListStorageKey, todoList);
       this.todoListSubject.next([...todoList]);
@@ -37,31 +41,31 @@ export class TodoListService {
     }
   }
 
-  async addItem(item: TodoItem) {
+   addItem(item: TodoItem) {
     const currentTodoList = this.todoListSubject.value;
     const updatedTodoList = [...currentTodoList, item];
-    await this.saveList(updatedTodoList);
+     this.saveList(updatedTodoList);
   }
 
-  async updateItem(item: TodoItem, changes: Partial<TodoItem>) {
+   updateItem(item: TodoItem, changes: Partial<TodoItem>) {
     const currentTodoList = this.todoListSubject.value;
     const index = currentTodoList.findIndex((i) => i === item);
 
     if (index !== -1) {
       const updatedTodoList = [...currentTodoList];
       updatedTodoList[index] = { ...item, ...changes };
-      await this.saveList(updatedTodoList);
+       this.saveList(updatedTodoList);
     }
   }
 
-  async deleteItem(item: TodoItem) {
+   deleteItem(item: TodoItem) {
     const currentTodoList = this.todoListSubject.value;
     const index = currentTodoList.indexOf(item);
 
     if (index !== -1) {
       const updatedTodoList = [...currentTodoList];
       updatedTodoList.splice(index, 1);
-      await this.saveList(updatedTodoList);
+       this.saveList(updatedTodoList);
     }
   }
 

@@ -2,8 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { TodoItem } from '../interfaces/todo-item';
 import { InputButtonUnitComponent } from '../input-button-unit/input-button-unit.component';
 import { TodoItemComponent } from '../todo-item/todo-item.component';
-import { NgFor } from '@angular/common';
-import { CommonModule } from '@angular/common';
+import { NgFor , CommonModule} from '@angular/common';
 import { TodoListService } from '../services/todo-list.service';
 import { Subscription } from 'rxjs';
 
@@ -39,7 +38,7 @@ export class ListManagerComponent implements OnDestroy {
   private subscription: Subscription;
 
   constructor(private todoListService: TodoListService) {
-    this.subscription = this.todoListService.todoList$.subscribe(updatedTodoList => {
+    this.subscription = this.todoListService.todoList.subscribe(updatedTodoList => {
       this.todoList = updatedTodoList;
     });
 

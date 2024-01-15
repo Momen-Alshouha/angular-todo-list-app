@@ -9,16 +9,19 @@ export class StorageService {
 
   getData(key: string): any {
     const storedData = localStorage.getItem(key);
-
-    if (storedData !== null) {
-      return JSON.parse(storedData);
-    } else {
+  
+    try {
+      return storedData !== null ? JSON.parse(storedData) : null;
+    } catch (error) {
+      console.error(`Error parsing data for key ${key}:`, error);
       return null;
     }
   }
+  
 
-  setData(key: string, data: any) {
+  setData<T>(key: string, data: T): void {
     localStorage.setItem(key, JSON.stringify(data));
   }
+  
   
 }
