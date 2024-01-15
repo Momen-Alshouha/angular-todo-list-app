@@ -1,0 +1,15 @@
+<div>
+    <h2 class="app-title">
+        {{ title }}
+    </h2>
+    <div class="todo-app">
+        <app-input-button-unit (submit)="addItem($event)"></app-input-button-unit>
+
+        <ul>
+            <li *ngFor="let todoItem of todoList; let i = index; trackBy: trackByFn">
+                <app-todo-item [item]="todoItem" (remove)="removeItem($event)"
+                    (update)="updateItem($event.item, $event.changes)"></app-todo-item>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -10,26 +10,7 @@ import { Subscription } from 'rxjs';
   selector: 'app-list-manager',
   standalone: true,
   imports: [TodoItemComponent, InputButtonUnitComponent, NgFor, CommonModule],
-  template: `
-  <div>
-    <h2 class="app-title">
-      {{ title }}
-    </h2>
-    <div class="todo-app">
-     <app-input-button-unit (submit)="addItem($event)"></app-input-button-unit>
-
-    <ul>
-      <li *ngFor="let todoItem of todoList; let i = index; trackBy: trackByFn">
-        <app-todo-item
-          [item]="todoItem"
-          (remove)="removeItem($event)"
-          (update)="updateItem($event.item, $event.changes)"
-        ></app-todo-item>
-      </li>
-    </ul>
-    </div>
-    </div>
-  `,
+  templateUrl: './list-manager.component.html',
   styleUrls: ['./list-manager.component.scss']
 })
 export class ListManagerComponent implements OnDestroy {

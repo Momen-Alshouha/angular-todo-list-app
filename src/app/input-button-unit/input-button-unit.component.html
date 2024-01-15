@@ -1,2 +1,6 @@
-<h1>Title : {{title}}</h1>
-<p>input-button-unit works!</p>
+<input class="todo-input" #inputElementRef placeholder="Enter New Task.."
+    (keyup.enter)="submitValue(inputElementRef.value)">
+    
+<button class="gradient-button button" (click)="submitValue(inputElementRef.value)">
+    Save
+</button>
