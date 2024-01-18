@@ -4,6 +4,7 @@ import { ListManagerComponent } from './list-manager/list-manager.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { Route } from '@angular/router';
 
 @Component({
   selector: 'app-root',
